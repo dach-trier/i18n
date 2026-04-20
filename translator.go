@@ -12,6 +12,10 @@ import "golang.org/x/text/language"
 //
 // Use MustTranslate if the translation is known to exist.
 func Translate(message string, targetLanguage language.Tag, bundle Bundle) (string, bool) {
+	if targetLanguage == language.English {
+		return message, true
+	}
+
 	var translations map[language.Tag]string
 	var translation string
 	var ok bool
