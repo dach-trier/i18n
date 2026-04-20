@@ -1,4 +1,4 @@
-package i18n_template
+package i18n_html
 
 import (
 	"fmt"
