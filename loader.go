@@ -9,8 +9,8 @@ import (
 )
 
 type entry struct {
-	Message     string `yaml:"message"`
-	Translation string `yaml:"translation"`
+	Src string `yaml:"src"`
+	Dst string `yaml:"dst"`
 }
 
 // Loads translations from a YAML file in the provided filesystem and adds them to the bundle.
@@ -42,8 +42,8 @@ func (bundle Bundle) LoadYaml(filesystem fs.FS, path string, lang language.Tag) 
 	}
 
 	for _, entry := range entries {
-		if ok = bundle.AddTranslation(entry.Message, entry.Translation, lang); !ok {
-			return fmt.Errorf("translation collision for message %q in language %q", entry.Message, lang)
+		if ok = bundle.AddTranslation(entry.Src, entry.Dst, lang); !ok {
+			return fmt.Errorf("translation collision for message %q in language %q", entry.Src, lang)
 		}
 	}
 
